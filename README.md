@@ -1,2 +1,9 @@
-# DLnano
-Analysis of nano satellite imagery of areas affected from war destruction with deep learning methods
+# Analysis of Nano Satellite Imagery of Areas Affected from War Destruction with Deep Learning Methods
+
+In war zones, it is often difficult to determine which areas are particularly affected and where aid is needed. Without actually being on site, it is difficult to determine which places are acutely affected by destruction and which are in need. 
+
+In order to be able to make up-to-date statements about these issues from a distance, we use deep learning methods applied to nana satellite images with 3 m spatial resolution. For this purpose, we show approaches how Convolutional Neural Networks could be used to detect destroyed or damaged urban structures. We use pixel-by-pixel classification in the form of an U-net and classic image classification. The mentioned methods were applied to the study areas in Syria (Deir-Ez-Zor, Al Raqqah) and Iraq (Mosul). Data from [UNITAR - UNOSAT](https://unitar.org/) were taken as reference data and the nano satellite data from [Planet](https://www.planet.com/) were used. 
+
+One must come to the conclusion that for our scope, the destruction was not recognizable by CNN's. Potential reasons are too low resolution (3 m – in comparison, the satellite data used for the reference data had a resolution of 50 cm), and too little difference between destroyed and non-destroyed areas from a bird's eye view in the study areas. In many cases, the destruction was not visible to us as humans on the satellite images. The question is whether the reference data are accurate enough for our use case, or whether point data are not sufficient for such a project. One problem we encountered was the limitation of a too small RAM so that we were not able to rebuild larger images. In the end, the model did not manage to classify the destroyed and non-destroyed areas, but the classification resulted in a strange north-south distribution, especially for larger tiles. 
+
+This software was developed as part of the study project "Deep Learning for the Analysis of Remote Sensing Imagery from Nano Satellites" in the summerterm 2021 at ifgi at the University of Münster.
