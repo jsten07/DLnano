@@ -5,6 +5,13 @@ library(sp)
 
 # setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
+#' Subset images and split in true / false data
+#' 
+#' @param inputrst Raster to be subsetted
+#' @param targetsize Vector: size of subsets (e.g. c(64, 64))
+#' @param targetdir String: Directory to save the images
+#' @param sf_points St_points: Points to split tiles in true / false; true if point within tile, false if not
+#' @return Cropped raster
 dl_subsets <- function(inputrst, targetsize, targetdir, targetname="", img_info_only = FALSE, is_mask = FALSE, sf_points){
   require(jpeg)
   require(raster)
@@ -88,18 +95,17 @@ dl_subsets <- function(inputrst, targetsize, targetdir, targetname="", img_info_
 }
 
 
+# Crop Mosul
 im_size = 64
 targetdir = "~/data/Mossul/prepared/"
-
-# nice crop
-
+ 
 img <- stack("~/data/Mossul/planet/Mosul_cropped.tif")
 sf_destroyed <- st_read("~/data/Mossul/shp/Mosul_damaged.shp")
 # sf_destroyed <- st_transform(sf_destroyed, crs(img))
 
-# cropped 
+# crop Deir
 # img <- stack("~/data_cropped.tif")
-sf_destroyed <- st_read("~/data/Deir_Ez_Zor/shp/Deir_destroyed_buildings.shp")
+# sf_destroyed <- st_read("~/data/Deir_Ez_Zor/shp/Deir_destroyed_buildings.shp")
 
 dir.create(file.path(targetdir, im_size), showWarnings = TRUE)
 
